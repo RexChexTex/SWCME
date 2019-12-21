@@ -1,7 +1,16 @@
-import re
+##Script will import the required modules and templates
 
-## Script will ask for an html page of the collection
+from flask import Flask, render_template
+from bs4 import BeautifulSoup
+import requests
 
+## Script will ask for an html page of the collection (hardcoded for now, will prompt for user input soon)
+## takes the webpage and stores it as a variable 'source', then runs the html scrape through BS to product the xml
+## For now, I'll output the XML as a test.
+
+source = requests.get('https://pythonprogramming.net/parsememcparseface/').text
+soup = BeautifulSoup(source, 'lxml')
+print(soup)
 ## Script will download a local copy of the html document and locally scan it for mod ID's
 
 ## Script will record the mod ID's into a timestamped or named .csv file
