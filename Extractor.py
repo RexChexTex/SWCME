@@ -1,26 +1,20 @@
-##Script will import the required modules and templates
 
-from flask import Flask, render_template
-from bs4 import BeautifulSoup
+from lxml import html
 import requests
 
-## Script will ask for an html page of the collection (hardcoded for now, will prompt for user input soon)
-## takes the webpage and stores it as a variable 'source', then runs the html scrape through BS to product the xml
-## For now, I'll output the XML as a test.
+page = requests.get('https://steamcommunity.com/sharedfiles/filedetails/?id=1724309839')
+tree = html.fromstring(page.content)
 
-source = requests.get('https://pythonprogramming.net/parsememcparseface/').text
-soup = BeautifulSoup(source, 'lxml')
-print(soup)
-## Script will download a local copy of the html document and locally scan it for mod ID's
+idloc = tree.xpath('//div[@id="profileBlock"]//div[contains(@class, "collectionItem") and starts-with(@id, "sharedfile_")]')
 
-## Script will record the mod ID's into a timestamped or named .csv file
- 
-## Script will output a total of discovered mods, and inform the user when the process is complete
+idnum = [element.get("id").replace("sharedfile_","") for element in idloc]
 
-## Script will output the stored location of the output file.
+output = ','.join(idnum)
 
+print(output)
 
-
+## Script will output a total of discovered mods
+## Script will output the stored location of the output file
 #below is a chunk of code sent to me by a friend that was used to parse through an html document for the values I needed.
 
 
