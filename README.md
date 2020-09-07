@@ -1,10 +1,7 @@
 # SWCME
-Steam Workshop Collection Modlist Extractor
+The Steam Workshop Collection Modlist Extractor serves as a tool to hasten the deployment of game servers that utilize mods from the steam workshop.
+Often, the server client will require the mods to be listed in a comma separated string, requiring cumbersome individual extraction.
 
-Hello! You've found my first project. 
+This tool allows a user to input the id number of the workshop collection, parse the steam workshop, and output a .csv file with a constructed string and matching .csv output file for easy sharing of lists and deployments. 
 
-This will be where I experiment with Python and Git.
 
-The goal will be a program that can convert a steam collection's mod ID numbers into a .csv file.
-
-This can be used in dedicated server lists and online modlist webhooks.
